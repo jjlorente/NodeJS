@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<% if (userStatus=="KO" || passStatus=="KO" ){
+	if(userStatus=="KO"){ %>
+		<h2>ERROR: Este nombre de usuario ya existe</h2>
+    <%} else{%>
+    	<h2>ERROR: Las contraseñas no coinciden</h2>
+	<%}} else if(userStatus=="OK" && passStatus=="OK") { %>
+	<h2> Usuario creado correctamente</h2>
+	<%}  %>
+
+
+</body>
+</html>
