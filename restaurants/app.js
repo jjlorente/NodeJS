@@ -6,24 +6,28 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 // per renderitzar les plantilles (render)
 app.set('view engine','ejs');
+require('dotenv').config();
   
 var mongoClient;
+// connexió a <span class="search_hit">mongo</span> i start app
+var mongo = require('mongodb').MongoClient;
 
-
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-// connexió a mongo i start app
-MongoClient.connect('mongodb://localhost:27017', function( err, _client ) {
+// consts
+const PORT = process.env.PORT || 5000
+const user = encodeURIComponent( process.env.DBUSER );
+const pass = encodeURIComponent( process.env.DBPASS );
+var dbConStr = "mongodb+srv://"+user+":"+pass+"@cluster0-wugkh.mongodb.net";
+mongo.connect( dbConStr, function( err, _client ) {
     // si no ens podem connectar, sortim
     if( err ) throw err;
     mongoClient = _client;
     // si no hi ha cap error de connexió, engeguem el servidor
-    app.listen(3000, function () {
-        console.log('Example app listening on http://localhost:3000 !');
+    app.listen(PORT, function () {
+        console.log('Example app listening on http://localhost:'+PORT+' !');
     });
-
 });
+
+
 
 
 app.get('/restaurant', function (req, res) {
