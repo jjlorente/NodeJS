@@ -2,17 +2,34 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+		.prop{
+			
+		}
+	</style>
 </head>
 <body>
 	<h1>Register restaurant</h1>
-	<form action="/restaurant" method="post">
-		<input type="text" name="username"> Name
-		<br>
-		<input type="text" name="categoria"> Category 
-		<br>
-		<input type="text" name="address"> Address 
-		<br>
-		<input type="submit" name="Enviar">
-	</form>
+	<div>
+		<form action="/restaurant" method="post">
+			Nom: <br>  <input type="text" name="username"> 
+			<br>
+			Poblacio: <br> <input type="text" name="poblacio">
+			<br>
+			Direccio: <br> <input type="text" name="direccio">
+			<br>
+			CP: <br> <input type="text" name="cp">
+			<br>
+			Telefon: <br> <input type="text" name="telefon">
+			<br>
+			<input type="submit" name="Enviar">
+		</form>
+	</div>
+		<%if (result.length > 0) { %>
+		<p>
+	
+			<%= result %>
+		</p>
+		<% } %>
 </body>
 </html>
